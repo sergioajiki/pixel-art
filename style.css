@@ -10,6 +10,7 @@ body {
     text-align: center;
 
 }
+
 .color {
     height: 40px;
     width: 40px;
@@ -20,12 +21,23 @@ body {
 .firstColor {
     background-color: black;
 }
+
 .secondColor {
     background-color: red;
 }
+
 .thirdcolor {
     background-color: green;
 }
+
 .fourtcolor {
     background-color: blue;
+}
+
+.selected {
+    background-color: black;
+}
+
+#buttons {
+    text-align: center;
 }
