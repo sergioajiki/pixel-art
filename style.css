@@ -1,0 +1,31 @@
+body {
+    background-color: lightgray;
+}
+
+#title {
+    text-align: center;
+}
+
+#color-palette {
+    text-align: center;
+
+}
+.color {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.firstColor {
+    background-color: black;
+}
+.secondColor {
+    background-color: red;
+}
+.thirdcolor {
+    background-color: green;
+}
+.fourtcolor {
+    background-color: blue;
+}
