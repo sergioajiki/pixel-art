@@ -23,16 +23,14 @@ body {
 }
 
 .secondColor {
-    height: 40px;
-    width: 40px;
-    
+    background-color: red;
 }
 
-.thirdcolor {
+.thirdColor {
     background-color: green;
 }
 
-.fourtcolor {
+.fourtColor {
     background-color: blue;
 }
 
@@ -40,11 +38,13 @@ body {
     background-color: black;
 }
 
-#buttons {
+#buttons-container {
     text-align: center;
 }
 
-#board-size {}
+#board-size {
+    color: navy;
+}
 
 #teste {
     display: inline-block;

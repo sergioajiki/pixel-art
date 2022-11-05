@@ -1,4 +1,3 @@
-
 // function corAleatoria() {
 //     let r = Math.floor(Math.random() * 255);
 //     let g = Math.floor(Math.random() * 255);
@@ -6,18 +5,17 @@
 //     let corRGB = `rgb(${r},${g},${b})`;
 //     console.log(corRGB);
 // }
-// corAleatoria();
 // captura dos botões
-let buttonInputBoard = document.getElementById('board-size');
-let buttonVQV = document.getElementById('generate-board');
-let buttonLimpar = document.getElementById('clear-board');
+const buttonInputBoard = document.getElementById('board-size');
+const buttonVQV = document.getElementById('generate-board');
+const buttonLimpar = document.getElementById('clear-board');
 // botão cor
-    
-    let getButtonCorAleatoria = document.getElementById('button-random-color');
-    getButtonCorAleatoria.addEventListener('click', () => {
-    let getTrocaCorClass2 = document.querySelector('.secondColor');
-    let getTrocaCorClass3 = document.querySelector('.thirdColor');
-    let getTrocaCorClass4 = document.querySelector('.fourtColor');
+
+const getButtonCorAleatoria = document.getElementById('button-random-color');
+getButtonCorAleatoria.addEventListener('click', () => {
+    const getTrocaCorClass2 = document.querySelector('.secondColor');
+    const getTrocaCorClass3 = document.querySelector('.thirdColor');
+    const getTrocaCorClass4 = document.querySelector('.fourtColor');
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
@@ -36,20 +34,7 @@ let buttonLimpar = document.getElementById('clear-board');
     corRGB = `rgb(${r},${g},${b})`;
     getTrocaCorClass4.style.background = corRGB;
     console.log(corRGB);
-
-
-
-
-
-    // console.log(getTrocaCorClass);
-    });
-    //    getTrocaCorClass.style.background-color === corRGB; 
-
-
-
-
+});
 // Botão apagar
-
-
 // console.log(getButtonCorAleatoria);
 // console.log(getTrocaCorClass);
