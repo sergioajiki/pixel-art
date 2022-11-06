@@ -39,8 +39,9 @@ body {
 }
 
 .selected {
-  background-color: black;
-}
+  height: 40px;
+  width: 40px;
+  }
 
 #buttons-container {
   margin-top: 10px;
