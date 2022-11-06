@@ -7,6 +7,13 @@
 // }
 // captura dos botões
 // botão input e VQV
+// let corAnterior0 = {
+//   guardaCor1: '',
+//   guardaCor2: '',
+//   guardaCor3: '',
+//   guardaCor4: '',
+// }
+// localStorage.setItem('colorPalette', JSON.stringify(corAnterior0));
 const getButtonInputBoard = document.getElementById('board-size');
 const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
@@ -34,20 +41,55 @@ getButtonCorAleatoria.addEventListener('click', () => {
   let b = Math.floor(Math.random() * 255);
   let corRGB = `rgb(${r},${g},${b})`;
   // console.log(corRGB);
-  getTrocaCorClass2.style.background = corRGB;
+  getTrocaCorClass2.style.backgroundColor = corRGB;
   r = Math.floor(Math.random() * 255);
   g = Math.floor(Math.random() * 255);
   b = Math.floor(Math.random() * 255);
   corRGB = `rgb(${r},${g},${b})`;
-  getTrocaCorClass3.style.background = corRGB;
+  getTrocaCorClass3.style.backgroundColor = corRGB;
   // console.log(corRGB);
   r = Math.floor(Math.random() * 255);
   g = Math.floor(Math.random() * 255);
   b = Math.floor(Math.random() * 255);
   corRGB = `rgb(${r},${g},${b})`;
-  getTrocaCorClass4.style.background = corRGB;
+  getTrocaCorClass4.style.backgroundColor = corRGB;
   // console.log(corRGB);
+
+  let guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
+  console.log(guardaCor1);
+  let guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
+  console.log(guardaCor2);
+  let guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
+  // console.log(guardaCor3);
+  let guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
+  // console.log(guardaCor4);
+  let corAnterior = {
+    guardaCor1,
+    guardaCor2,
+    guardaCor3,
+    guardaCor4,
+  }
+  // console.log(guardarCores);
+  // console.log(corAnterior);
+  // console.log(guardarCores);
+  localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
+  // console.log(localStorage);
 });
+const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
+console.log(recoveryColor);
+
+const corInicial1 = document.querySelector('.firstColor');
+corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
+
+const corInicial2 = document.querySelector('.secondColor');
+corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+
+const corInicial3 = document.querySelector('.thirdColor');
+corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
+
+const corInicial4 = document.querySelector('.fourtColor');
+corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
+
 
 // Botão apagar
 const getButtonLimpar = document.getElementById('clear-board');
@@ -102,11 +144,15 @@ selecionaFourtColor.addEventListener('click', () => {
 let getPixel = document.querySelector('.pixel');
 // console.log(getPixel);
 getPixel.addEventListener('click', () => {
-  
+
   const pincel = document.querySelector('.selected');
   console.log(pincel);
   let corDoPincel = pincel.style.backgroundColor;
   console.log(corDoPincel)
   getPixel.style.backgroundColor = corDoPincel;
-;
+  ;
 });
+
+// manter a cor ao recarregar
+
+
