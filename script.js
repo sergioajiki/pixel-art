@@ -24,6 +24,9 @@ window.onload = function () {
 const getButtonInputBoard = document.getElementById('board-size');
 const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
+  const apagaQuadro = document.getElementById('pixel-board');
+  apagaQuadro.innerHTML = '';
+  console.log(apagaQuadro);
   let N = getButtonInputBoard.value;
   if (N == '') {
     alert('Board Inválido!');
@@ -164,23 +167,25 @@ selecionaFourtColor.addEventListener('click', () => {
   selecionaFourtColor.classList.add('selected');
 });
 
-let getPixel = document.querySelector('.pixel')
-getPixel.addEventListener('click', () => {
-  let pincel = document.querySelector('.selected');
-  console.log(pincel);
-  let corDoPincel = pincel.style.backgroundColor;
-  getPixel.style.backgroundColor = corDoPincel;
-});
-
-// // pintar quadro
-// const getPixel = document.querySelectorAll('.pixel');
-// console.log(getPixel);
-// const pincel = document.querySelector('.selected');
-// console.log(pincel);
-// getPixel[index].addEventListener('click', () => {
-//     for (let index = 0; index < getPixel.length; index +=1) {
-//     let corDoPincel = pincel.style.backgroundColor;
-//     getPixel[index].style.backgroundColor = corDoPincel;
-//   }
-// // console.log(getPixel);
+// let getPixel = document.querySelector('.pixel')
+// getPixel.addEventListener('click', () => {
+//   let pincel = document.querySelector('.selected');
+//   console.log(pincel);
+//   let corDoPincel = pincel.style.backgroundColor;
+//   getPixel.style.backgroundColor = corDoPincel;
 // });
+
+// pintar quadro
+
+
+const getPixel = document.querySelectorAll('.pixel');
+console.log(getPixel);
+getPixel[index].addEventListener('click', () => {
+    let pincel = document.querySelector('.selected');
+    console.log(pincel);
+    for (let index = 0; index < getPixel.length; index +=1) {
+    let corDoPincel = pincel.style.backgroundColor;
+    getPixel[index].style.backgroundColor = corDoPincel;
+  }
+console.log(getPixel);
+});
