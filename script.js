@@ -7,14 +7,41 @@
 // }
 // captura dos botões
 // botão input e VQV
-
-// let corAnterior0 = {
-//   guardaCor1: '',
-//   guardaCor2: '',
-//   guardaCor3: '',
-//   guardaCor4: '',
+window.onload = function () {
+  if(localStorage.getItem('colorPalette') === null) {
+  let guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
+  console.log(guardaCor1);
+  let guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
+  console.log(guardaCor2);
+  let guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
+  console.log(guardaCor3);
+  let guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;  
+  console.log(guardaCor4);
+}
+else {
+  const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
+  const corInicial1 = document.querySelector('.firstColor');
+  corInicial1.style.backgroundColor = recoveryColor.guardaCor1;
+  
+  const corInicial2 = document.querySelector('.secondColor');
+  corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+  
+  const corInicial3 = document.querySelector('.thirdColor');
+  corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
+  
+  const corInicial4 = document.querySelector('.fourtColor');
+  corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
+}
+}
+// let corAnterior = {
+//   guardaCor1,
+//   guardaCor2,
+//   guardaCor3,
+//   guardaCor4,
 // }
-// localStorage.setItem('colorPalette', JSON.stringify(corAnterior0));
+// localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
+
+
 const getButtonInputBoard = document.getElementById('board-size');
 const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
@@ -31,6 +58,13 @@ getButtonVQV.addEventListener('click', () => {
 });
 
 // botão cor aleatoria
+// let corAnterior = {
+//     guardaCor1: 'black',
+//     guardaCor2: 'red',
+//     guardaCor3: 'green',
+//     guardaCor4: 'blue',
+//   }
+
 const getButtonCorAleatoria = document.getElementById('button-random-color');
 const getTrocaCorClass2 = document.querySelector('.secondColor');
 const getTrocaCorClass3 = document.querySelector('.thirdColor');
@@ -54,6 +88,7 @@ getButtonCorAleatoria.addEventListener('click', () => {
   corRGB = `rgb(${r},${g},${b})`;
   getTrocaCorClass4.style.backgroundColor = corRGB;
   // console.log(corRGB);
+// });  
 
   let guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
   // console.log(guardaCor1);
@@ -70,20 +105,21 @@ getButtonCorAleatoria.addEventListener('click', () => {
     guardaCor4,
   }
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
-});
+});  
+
 // function corZero() {
-  const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
-  const corInicial1 = document.querySelector('.firstColor');
-  corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
+  // const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
+  // const corInicial1 = document.querySelector('.firstColor');
+  // corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
   
-  const corInicial2 = document.querySelector('.secondColor');
-  corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+  // const corInicial2 = document.querySelector('.secondColor');
+  // corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
   
-  const corInicial3 = document.querySelector('.thirdColor');
-  corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
+  // const corInicial3 = document.querySelector('.thirdColor');
+  // corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
   
-  const corInicial4 = document.querySelector('.fourtColor');
-  corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
+  // const corInicial4 = document.querySelector('.fourtColor');
+  // corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
 
 
   // const corInicial1 = document.querySelector('.firstColor');

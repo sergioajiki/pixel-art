@@ -19,22 +19,22 @@ body {
 }
 
 .firstColor {
-  background-color: black;
+  /* background-color: black; */
   display: inline-block;
 }
 
 .secondColor {
-  background-color: red;
+  /* background-color: red; */
   display: inline-block;
 }
 
 .thirdColor {
-  background-color: green;
+  /* background-color: green; */
   display: inline-block;
 }
 
 .fourtColor {
-  background-color: blue;
+  /* background-color: blue; */
   display: inline-block;
 }
 
