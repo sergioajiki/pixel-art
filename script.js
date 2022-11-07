@@ -7,6 +7,7 @@
 // }
 // captura dos botões
 // botão input e VQV
+
 // let corAnterior0 = {
 //   guardaCor1: '',
 //   guardaCor2: '',
@@ -27,7 +28,6 @@ getButtonVQV.addEventListener('click', () => {
   if (N < 5) {
     N = 5
   }
-  // console.log(N);
 });
 
 // botão cor aleatoria
@@ -56,9 +56,9 @@ getButtonCorAleatoria.addEventListener('click', () => {
   // console.log(corRGB);
 
   let guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
-  console.log(guardaCor1);
+  // console.log(guardaCor1);
   let guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
-  console.log(guardaCor2);
+  // console.log(guardaCor2);
   let guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
   // console.log(guardaCor3);
   let guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
@@ -69,26 +69,50 @@ getButtonCorAleatoria.addEventListener('click', () => {
     guardaCor3,
     guardaCor4,
   }
-  // console.log(guardarCores);
-  // console.log(corAnterior);
-  // console.log(guardarCores);
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
-  // console.log(localStorage);
 });
-const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
-console.log(recoveryColor);
+// function corZero() {
+  const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
+  const corInicial1 = document.querySelector('.firstColor');
+  corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
+  
+  const corInicial2 = document.querySelector('.secondColor');
+  corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+  
+  const corInicial3 = document.querySelector('.thirdColor');
+  corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
+  
+  const corInicial4 = document.querySelector('.fourtColor');
+  corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
 
-const corInicial1 = document.querySelector('.firstColor');
-corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
 
-const corInicial2 = document.querySelector('.secondColor');
-corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+  // const corInicial1 = document.querySelector('.firstColor');
+  // console.log(recoveryColor['guardaCor1'])
+  // if (recoveryColor['guardaCor1'] === null) {
+    //   corInicial1.style.backgroundColor = 'black';
+    // } else {
+      //   corInicial1.style.backgroundColor = recoveryColor['guardaCor1'];
+  // }
+  // const corInicial2 = document.querySelector('.secondColor');
+  // if (recoveryColor['guardaCor2'] === null) {
+  //   corInicial2.style.backgroundColor = 'red';
+  // } else {
+  //   corInicial2.style.backgroundColor = recoveryColor['guardaCor2'];
+  // }
+  // const corInicial3 = document.querySelector('.thirdColor');
+  // if (recoveryColor['guardaCor3'] === '') {
+  //   corInicial3.style.backgroundColor = 'green';
+  // } else {
+  //   corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
+  // }
+  // const corInicial4 = document.querySelector('.fourtColor');
+  // if (recoveryColor['guardaCor4'] === '') {
+  //   corInicial4.style.backgroundColor = 'blue';
+  // } else {
+  //   corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
+  // }
 
-const corInicial3 = document.querySelector('.thirdColor');
-corInicial3.style.backgroundColor = recoveryColor['guardaCor3'];
-
-const corInicial4 = document.querySelector('.fourtColor');
-corInicial4.style.backgroundColor = recoveryColor['guardaCor4'];
+  // }
 
 
 // Botão apagar
@@ -108,7 +132,6 @@ const selecionaFirstColor = document.querySelectorAll('.color')[0];
 const selecionaSecondColor = document.querySelectorAll('.color')[1];
 const selecionaThirdColor = document.querySelectorAll('.color')[2];
 const selecionaFourtColor = document.querySelectorAll('.color')[3];
-
 // console.log(selecionaFirstColor);
 // console.log(selecionaSecondColor);
 // console.log(selecionaThirdColor);
@@ -144,15 +167,12 @@ selecionaFourtColor.addEventListener('click', () => {
 let getPixel = document.querySelector('.pixel');
 // console.log(getPixel);
 getPixel.addEventListener('click', () => {
-
   const pincel = document.querySelector('.selected');
-  console.log(pincel);
+  // console.log(pincel);
   let corDoPincel = pincel.style.backgroundColor;
-  console.log(corDoPincel)
+  // console.log(corDoPincel)
   getPixel.style.backgroundColor = corDoPincel;
-  ;
+  
 });
 
 // manter a cor ao recarregar
-
-
