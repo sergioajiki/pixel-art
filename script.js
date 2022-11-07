@@ -38,8 +38,9 @@ getButtonVQV.addEventListener('click', () => {
   let coluna = N;
   let linha = N;
   let mainBoard = document.querySelector('#pixel-board');
-  for (i = 0; i <= coluna; i += 1) {
-    for (index = 0; index <= linha; index += 1) {
+  for (i = 0; i < coluna; i += 1) {
+
+    for (index = 0; index < linha; index += 1) {
       let pixelDoQuadro = document.createElement('div');
       pixelDoQuadro.className = 'pixel';
       pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
@@ -48,8 +49,10 @@ getButtonVQV.addEventListener('click', () => {
       pixelDoQuadro.style.border = '1px solid black';
       pixelDoQuadro.style.display = 'inline-block';
       mainBoard.appendChild(pixelDoQuadro);
-      ;
+      
     }
+    
+    mainBoard.appendChild(document.createElement('br'))
   }
 });
 
@@ -143,7 +146,7 @@ selecionaFourtColor.addEventListener('click', () => {
   }
   selecionaFourtColor.classList.add('selected');
 });
-function makeBoard(){
+function boardInicio(){
 let mainBoard = document.querySelector('#pixel-board');
   for (i = 0; i < 5; i += 1) {
     for (index = 0; index < 5; index += 1) {
@@ -156,9 +159,10 @@ let mainBoard = document.querySelector('#pixel-board');
       pixelDoQuadro.style.display = 'inline-block';
       mainBoard.appendChild(pixelDoQuadro);
       }
-  }   
+    mainBoard.appendChild(document.createElement('br'))
+  }  
 }
-  makeBoard();
+  boardInicio();
 // // pintar quadro
 // const getPixel = document.querySelector('.pixel');
 // // console.log(getPixel);
