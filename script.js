@@ -52,13 +52,10 @@ getButtonVQV.addEventListener('click', () => {
       pixelDoQuadro.style.border = '1px solid black';
       pixelDoQuadro.style.display = 'inline-block';
       mainBoard.appendChild(pixelDoQuadro);
-      
     }
-    
     mainBoard.appendChild(document.createElement('br'))
   }
 });
-
 
 // botão cor aleatoria
 const getButtonCorAleatoria = document.getElementById('button-random-color');
@@ -114,23 +111,23 @@ getButtonLimpar.addEventListener('click', () => {
   }
 });
 
-function boardInicio(){
+function boardInicio() {
   let mainBoard = document.querySelector('#pixel-board');
-    for (i = 0; i < 5; i += 1) {
-      for (index = 0; index < 5; index += 1) {
-        let pixelDoQuadro = document.createElement('div');
-        pixelDoQuadro.className = 'pixel';
-        pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
-        pixelDoQuadro.style.height = '40px';
-        pixelDoQuadro.style.width = '40px';
-        pixelDoQuadro.style.border = '1px solid black';
-        pixelDoQuadro.style.display = 'inline-block';
-        mainBoard.appendChild(pixelDoQuadro);
-        }
-      mainBoard.appendChild(document.createElement('br'))
-    }  
+  for (i = 0; i < 5; i += 1) {
+    for (index = 0; index < 5; index += 1) {
+      let pixelDoQuadro = document.createElement('div');
+      pixelDoQuadro.className = 'pixel';
+      pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
+      pixelDoQuadro.style.height = '40px';
+      pixelDoQuadro.style.width = '40px';
+      pixelDoQuadro.style.border = '1px solid black';
+      pixelDoQuadro.style.display = 'inline-block';
+      mainBoard.appendChild(pixelDoQuadro);
+    }
+    mainBoard.appendChild(document.createElement('br'))
   }
-  boardInicio();
+}
+boardInicio();
 // Mudar classe selected
 const selecionaFirstColor = document.querySelectorAll('.color')[0];
 const selecionaSecondColor = document.querySelectorAll('.color')[1];
@@ -166,26 +163,17 @@ selecionaFourtColor.addEventListener('click', () => {
   }
   selecionaFourtColor.classList.add('selected');
 });
-
-// let getPixel = document.querySelector('.pixel')
-// getPixel.addEventListener('click', () => {
-//   let pincel = document.querySelector('.selected');
-//   console.log(pincel);
-//   let corDoPincel = pincel.style.backgroundColor;
-//   getPixel.style.backgroundColor = corDoPincel;
-// });
-
 // pintar quadro
 
-
-const getPixel = document.querySelectorAll('.pixel');
-console.log(getPixel);
-getPixel[index].addEventListener('click', () => {
+let getPixel = document.querySelectorAll('.pixel');
+for (let index = 0; index < getPixel.length; index += 1) {
+  const selectPixel = document.getElementsByClassName('pixel');
+  selectPixel[index].addEventListener('mousedown', (event) => {
+    event.target;
     let pincel = document.querySelector('.selected');
-    console.log(pincel);
-    for (let index = 0; index < getPixel.length; index +=1) {
     let corDoPincel = pincel.style.backgroundColor;
-    getPixel[index].style.backgroundColor = corDoPincel;
-  }
-console.log(getPixel);
-});
+    // console.log(getPixel);
+    console.log(corDoPincel);
+    selectPixel[index].style.backgroundColor = corDoPincel;
+  });
+}
