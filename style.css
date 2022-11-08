@@ -9,7 +9,6 @@ body {
 #color-palette {
   margin-top: 30px;
   text-align: center;
-  /* display: inline-block; */
 }
 
 .color {
@@ -19,29 +18,25 @@ body {
 }
 
 .firstColor {
-  /* background-color: black; */
   display: inline-block;
 }
 
 .secondColor {
-  /* background-color: red; */
   display: inline-block;
 }
 
 .thirdColor {
-  /* background-color: green; */
   display: inline-block;
 }
 
 .fourtColor {
-  /* background-color: blue; */
   display: inline-block;
 }
 
 .selected {
   height: 40px;
   width: 40px;
-  }
+}
 
 #buttons-container {
   margin-top: 10px;

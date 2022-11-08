@@ -8,13 +8,10 @@ window.onload = function () {
     const recoveryColor = JSON.parse(localStorage.getItem('colorPalette'));
     const corInicial1 = document.querySelector('.firstColor');
     corInicial1.style.backgroundColor = recoveryColor.guardaCor1;
-
     const corInicial2 = document.querySelector('.secondColor');
     corInicial2.style.backgroundColor = recoveryColor.guardaCor2;
-
     const corInicial3 = document.querySelector('.thirdColor');
     corInicial3.style.backgroundColor = recoveryColor.guardaCor3;
-
     const corInicial4 = document.querySelector('.fourtColor');
     corInicial4.style.backgroundColor = recoveryColor.guardaCor4;
   }
@@ -26,25 +23,23 @@ const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
   const apagaQuadro = document.getElementById('pixel-board');
   apagaQuadro.innerHTML = '';
-  console.log(apagaQuadro);
   let N = getButtonInputBoard.value;
-  if (N == '') {
+  if (N === '') {
     alert('Board Inválido!');
   }
   if (N > 50) {
-    N = 50
+    N = 50;
   }
   if (N < 5) {
-    N = 5
+    N = 5;
   }
   // criar a pixel board
-  let coluna = N;
-  let linha = N;
+  const coluna = N;
+  const linha = N;
   let mainBoard = document.querySelector('#pixel-board');
-  for (i = 0; i < coluna; i += 1) {
-
-    for (index = 0; index < linha; index += 1) {
-      let pixelDoQuadro = document.createElement('div');
+  for (let i = 0; i < coluna; i += 1) {
+    for (let index = 0; index < linha; index += 1) {
+      const pixelDoQuadro = document.createElement('div');
       pixelDoQuadro.className = 'pixel';
       pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
       pixelDoQuadro.style.height = '40px';
@@ -53,7 +48,7 @@ getButtonVQV.addEventListener('click', () => {
       pixelDoQuadro.style.display = 'inline-block';
       mainBoard.appendChild(pixelDoQuadro);
     }
-    mainBoard.appendChild(document.createElement('br'))
+    mainBoard.appendChild(document.createElement('br'));
   }
 });
 
@@ -82,13 +77,13 @@ getButtonCorAleatoria.addEventListener('click', () => {
   getTrocaCorClass4.style.backgroundColor = corRGB;
   // console.log(corRGB);
   // manter a cor ao recarregar
-  let guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
+  const guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
   // console.log(guardaCor1);
-  let guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
+  const guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
   // console.log(guardaCor2);
-  let guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
+  const guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
   // console.log(guardaCor3);
-  let guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
+  const guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
   // console.log(guardaCor4);
   let corAnterior = {
     guardaCor1,
@@ -99,22 +94,10 @@ getButtonCorAleatoria.addEventListener('click', () => {
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
 });
 
-// Botão apagar
-const getButtonLimpar = document.getElementById('clear-board');
-const getPixelClass = document.querySelectorAll('.pixel');
-const corApagar = 'rgb(255,255,255)';
-getButtonLimpar.addEventListener('click', () => {
-  for (index = 0; index < getPixelClass.length; index += 1) {
-    // if (getPixelClass[index].style.background !== 'rgb(255,255,255)'){
-    getPixelClass[index].style.background = corApagar;
-    // }
-  }
-});
-
 function boardInicio() {
   let mainBoard = document.querySelector('#pixel-board');
-  for (i = 0; i < 5; i += 1) {
-    for (index = 0; index < 5; index += 1) {
+  for (let i = 0; i < 5; i += 1) {
+    for (let index = 0; index < 5; index += 1) {
       let pixelDoQuadro = document.createElement('div');
       pixelDoQuadro.className = 'pixel';
       pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
@@ -124,7 +107,7 @@ function boardInicio() {
       pixelDoQuadro.style.display = 'inline-block';
       mainBoard.appendChild(pixelDoQuadro);
     }
-    mainBoard.appendChild(document.createElement('br'))
+    mainBoard.appendChild(document.createElement('br'));
   }
 }
 boardInicio();
@@ -140,25 +123,25 @@ const selecionaFourtColor = document.querySelectorAll('.color')[3];
 // Mudar classe selected
 const corSelected = document.querySelectorAll('.color');
 selecionaFirstColor.addEventListener('click', () => {
-  for (index = 0; index < corSelected.length; index += 1) {
+  for (let index = 0; index < corSelected.length; index += 1) {
     corSelected[index].classList.remove('selected');
   }
   selecionaFirstColor.classList.add('selected');
 });
 selecionaSecondColor.addEventListener('click', () => {
-  for (index = 0; index < corSelected.length; index += 1) {
+  for (let index = 0; index < corSelected.length; index += 1) {
     corSelected[index].classList.remove('selected');
   }
   selecionaSecondColor.classList.add('selected');
 });
 selecionaThirdColor.addEventListener('click', () => {
-  for (index = 0; index < corSelected.length; index += 1) {
+  for (let index = 0; index < corSelected.length; index += 1) {
     corSelected[index].classList.remove('selected');
   }
   selecionaThirdColor.classList.add('selected');
 });
 selecionaFourtColor.addEventListener('click', () => {
-  for (index = 0; index < corSelected.length; index += 1) {
+  for (let index = 0; index < corSelected.length; index += 1) {
     corSelected[index].classList.remove('selected');
   }
   selecionaFourtColor.classList.add('selected');
@@ -177,3 +160,15 @@ for (let index = 0; index < getPixel.length; index += 1) {
     selectPixel[index].style.backgroundColor = corDoPincel;
   });
 }
+
+// Botão apagar
+const getButtonLimpar = document.getElementById('clear-board');
+const getPixelClass = document.querySelectorAll('.pixel');
+const corApagar = 'rgb(255,255,255)';
+getButtonLimpar.addEventListener('click', () => {
+  for (let index = 0; index < getPixelClass.length; index += 1) {
+    // if (getPixelClass[index].style.background !== 'rgb(255,255,255)'){
+    getPixelClass[index].style.background = corApagar;
+    // }
+  }
+});
