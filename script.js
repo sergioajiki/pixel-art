@@ -27,10 +27,9 @@ function boardInicio() {
   }
   guardaCor();
   geral();
-  console.log(desenhoAnterior);
-  console.log(boardRecovery);
 }
 boardInicio();
+
 window.onload = () => {
   if (localStorage.getItem('colorPalette') === null) {
     const guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
@@ -131,13 +130,7 @@ getButtonCorAleatoria.addEventListener('click', () => {
   const guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
   const guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
   const guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
-
-  const corAnterior = {
-    guardaCor1,
-    guardaCor2,
-    guardaCor3,
-    guardaCor4,
-  };
+  const corAnterior = {guardaCor1, guardaCor2, guardaCor3, guardaCor4};
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
 });
 
@@ -192,9 +185,7 @@ function geral() {
     const corApagar = 'rgb(255,255,255)';
     getButtonLimpar.addEventListener('click', () => {
       for (index = 0; index < getPixelClass.length; index += 1) {
-        // if (getPixelClass[index].style.background !== 'rgb(255,255,255)'){
         getPixelClass[index].style.background = corApagar;
-        // }
       }
     });
   }
