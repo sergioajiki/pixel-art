@@ -1,4 +1,37 @@
-window.onload = function () {
+function guardaCor() {
+  const matrizDeCor = document.getElementsByClassName('pixel');
+  const guardaMatrizDeCor = [];
+  for (let index = 0; index < matrizDeCor.length; index += 1) {
+    guardaMatrizDeCor.push(matrizDeCor[index].style.backgroundColor);
+    // console.log(guardaMatrizDeCor);
+  }
+  // console.log(guardaMatrizDeCor);
+  localStorage.setItem('pixelBoard', JSON.stringify(guardaMatrizDeCor));
+}
+
+function boardInicio() {
+  const mainBoard = document.querySelector('#pixel-board');
+  const N = JSON.parse(localStorage.getItem('boardSize'));
+  for (let i = 0; i < N; i += 1) {
+    for (let index = 0; index < N; index += 1) {
+      const pixelDoQuadro = document.createElement('div');
+      pixelDoQuadro.className = 'pixel';
+      mainBoard.appendChild(pixelDoQuadro);
+    }
+    mainBoard.appendChild(document.createElement('br'));
+  }
+  const boardRecovery = document.querySelectorAll('.pixel');
+  const desenhoAnterior = JSON.parse(localStorage.getItem('pixelBoard'));
+  for (let index = 0; index < boardRecovery.length; index += 1) {
+    boardRecovery[index].style.backgroundColor = desenhoAnterior[index];
+  }
+  guardaCor();
+  geral();
+  console.log(desenhoAnterior);
+  console.log(boardRecovery);
+}
+boardInicio();
+window.onload = () => {
   if (localStorage.getItem('colorPalette') === null) {
     const guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
     const guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
@@ -16,30 +49,26 @@ window.onload = function () {
     corInicial4.style.backgroundColor = recoveryColor.guardaCor4;
   }
   if (localStorage.getItem('boardSize') === null) {
-    let N = 5;
+    const N = 5;
     localStorage.setItem('boardSize', JSON.stringify(N));
     boardInicio();
     geral();
     guardaCor();
-    return
-
+    return;
   }
   if (localStorage.getItem('pixelBoard') === null) {
-    let guardaMatrizDeCor = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-
+    const guardaMatrizDeCor = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
     boardInicio();
     geral();
     guardaCor();
-    return
+    return;
   }
-
 };
 // captura dos botões
 // botão input e VQV
 const getButtonInputBoard = document.getElementById('board-size');
 const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
-
   const apagaQuadro = document.getElementById('pixel-board');
   apagaQuadro.innerHTML = '';
   let N = getButtonInputBoard.value;
@@ -52,26 +81,18 @@ getButtonVQV.addEventListener('click', () => {
   if (N < 5) {
     N = 5;
   }
+
   // criar a pixel board
   const coluna = N;
   const linha = N;
-  let mainBoard = document.querySelector('#pixel-board');
+  const mainBoard = document.querySelector('#pixel-board');
   for (let i = 0; i < coluna; i += 1) {
     for (let index = 0; index < linha; index += 1) {
       const pixelDoQuadro = document.createElement('div');
       pixelDoQuadro.className = 'pixel';
-      // pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
-      // pixelDoQuadro.style.height = '40px';
-      // pixelDoQuadro.style.width = '40px';
-      // pixelDoQuadro.style.border = '1px solid black';
-      // pixelDoQuadro.style.display = 'inline-block';
-
-      pixelDoQuadro.addEventListener('mousedown', (event) => {
-        // event.target;
+      pixelDoQuadro.addEventListener('click', () => {
         const pincel = document.querySelector('.selected');
         const corDoPincel = pincel.style.backgroundColor;
-        // console.log(getPixel);
-        // console.log(corDoPincel);
         pixelDoQuadro.style.backgroundColor = corDoPincel;
       });
       mainBoard.appendChild(pixelDoQuadro);
@@ -93,14 +114,12 @@ getButtonCorAleatoria.addEventListener('click', () => {
   let g = Math.floor(Math.random() * 255);
   let b = Math.floor(Math.random() * 255);
   let corRGB = `rgb(${r},${g},${b})`;
-
   getTrocaCorClass2.style.backgroundColor = corRGB;
   r = Math.floor(Math.random() * 255);
   g = Math.floor(Math.random() * 255);
   b = Math.floor(Math.random() * 255);
   corRGB = `rgb(${r},${g},${b})`;
   getTrocaCorClass3.style.backgroundColor = corRGB;
-
   r = Math.floor(Math.random() * 255);
   g = Math.floor(Math.random() * 255);
   b = Math.floor(Math.random() * 255);
@@ -113,7 +132,7 @@ getButtonCorAleatoria.addEventListener('click', () => {
   const guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
   const guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
 
-  let corAnterior = {
+  const corAnterior = {
     guardaCor1,
     guardaCor2,
     guardaCor3,
@@ -122,44 +141,6 @@ getButtonCorAleatoria.addEventListener('click', () => {
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
 });
 
-// function recoveryBoard(){
-// const desenhoAnterior = JSON.parse(localStorage.getItem('pixelBoard'));
-
-
-// }
-
-
-
-
-
-
-function boardInicio() {
-  const mainBoard = document.querySelector('#pixel-board');
-  const N = JSON.parse(localStorage.getItem('boardSize'));
-  for (let i = 0; i < N; i += 1) {
-    for (let index = 0; index < N; index += 1) {
-      let pixelDoQuadro = document.createElement('div');
-      pixelDoQuadro.className = 'pixel';
-      // pixelDoQuadro.style.backgroundColor = 'rgb(255,255,255)';
-      // pixelDoQuadro.style.height = '40px';
-      // pixelDoQuadro.style.width = '40px';
-      // pixelDoQuadro.style.border = '1px solid black';
-      // pixelDoQuadro.style.display = 'inline-block';
-      mainBoard.appendChild(pixelDoQuadro);
-    }
-    mainBoard.appendChild(document.createElement('br'));
-  }
-  const boardRecovery = document.querySelectorAll('.pixel');
-  const desenhoAnterior = JSON.parse(localStorage.getItem('pixelBoard'));
-  for (let index = 0; index < boardRecovery.length; index += 1) {
-    boardRecovery[index].style.backgroundColor = desenhoAnterior[index];
-  }
-  guardaCor();
-  geral();
-  console.log(desenhoAnterior);
-  console.log(boardRecovery);
-}
-boardInicio();
 function geral() {
   // Mudar classe selected
   const selecionaFirstColor = document.querySelectorAll('.color')[0];
@@ -195,43 +176,27 @@ function geral() {
   });
   // pintar quadro
 
-  let getPixel = document.querySelectorAll('.pixel');
+  const getPixel = document.querySelectorAll('.pixel');
   for (let index = 0; index < getPixel.length; index += 1) {
-
     const selectPixel = document.getElementsByClassName('pixel');
-    selectPixel[index].addEventListener('mousedown', (event) => {
-      // event.target;
+    selectPixel[index].addEventListener('click', () => {
       const pincel = document.querySelector('.selected');
       const corDoPincel = pincel.style.backgroundColor;
-      // console.log(getPixel);
-      // console.log(corDoPincel);
       selectPixel[index].style.backgroundColor = corDoPincel;
       guardaCor();
     });
+
     // Botão apagar
     const getButtonLimpar = document.getElementById('clear-board');
     const getPixelClass = document.querySelectorAll('.pixel');
     const corApagar = 'rgb(255,255,255)';
     getButtonLimpar.addEventListener('click', () => {
-      for (let index = 0; index < getPixelClass.length; index += 1) {
+      for (index = 0; index < getPixelClass.length; index += 1) {
         // if (getPixelClass[index].style.background !== 'rgb(255,255,255)'){
         getPixelClass[index].style.background = corApagar;
         // }
       }
-    })
+    });
   }
-  guardaCor()
+  guardaCor();
 }
-function guardaCor() {
-  let matrizDeCor = document.getElementsByClassName('pixel');
-  // console.log(matrizDeCor);
-  let guardaMatrizDeCor = [];
-  for (index = 0; index < matrizDeCor.length; index += 1) {
-    guardaMatrizDeCor.push(matrizDeCor[index].style.backgroundColor);
-    // console.log(guardaMatrizDeCor);
-  }
-  // console.log(guardaMatrizDeCor);
-  localStorage.setItem('pixelBoard', JSON.stringify(guardaMatrizDeCor));
-}
-
-
