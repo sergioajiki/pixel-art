@@ -20,14 +20,26 @@ window.onload = function () {
     localStorage.setItem('boardSize', JSON.stringify(N));
     boardInicio();
     geral();
+    guardaCor();
+    return
+
+  }
+  if (localStorage.getItem('pixelBoard') === null) {
+    let guardaMatrizDeCor = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+
+    boardInicio();
+    geral();
+    guardaCor();
     return
   }
+
 };
 // captura dos botões
 // botão input e VQV
 const getButtonInputBoard = document.getElementById('board-size');
 const getButtonVQV = document.getElementById('generate-board');
 getButtonVQV.addEventListener('click', () => {
+
   const apagaQuadro = document.getElementById('pixel-board');
   apagaQuadro.innerHTML = '';
   let N = getButtonInputBoard.value;
@@ -59,15 +71,16 @@ getButtonVQV.addEventListener('click', () => {
         const pincel = document.querySelector('.selected');
         const corDoPincel = pincel.style.backgroundColor;
         // console.log(getPixel);
-        console.log(corDoPincel);
+        // console.log(corDoPincel);
         pixelDoQuadro.style.backgroundColor = corDoPincel;
       });
       mainBoard.appendChild(pixelDoQuadro);
     }
     mainBoard.appendChild(document.createElement('br'));
-
   }
   localStorage.setItem('boardSize', JSON.stringify(N));
+  geral();
+  guardaCor();
 });
 
 // botão cor aleatoria
@@ -96,11 +109,8 @@ getButtonCorAleatoria.addEventListener('click', () => {
 
   // manter a cor ao recarregar
   const guardaCor1 = document.querySelector('.firstColor').style.backgroundColor;
-
   const guardaCor2 = document.querySelector('.secondColor').style.backgroundColor;
-
   const guardaCor3 = document.querySelector('.thirdColor').style.backgroundColor;
-
   const guardaCor4 = document.querySelector('.fourtColor').style.backgroundColor;
 
   let corAnterior = {
@@ -111,6 +121,17 @@ getButtonCorAleatoria.addEventListener('click', () => {
   };
   localStorage.setItem('colorPalette', JSON.stringify(corAnterior));
 });
+
+// function recoveryBoard(){
+// const desenhoAnterior = JSON.parse(localStorage.getItem('pixelBoard'));
+
+
+// }
+
+
+
+
+
 
 function boardInicio() {
   const mainBoard = document.querySelector('#pixel-board');
@@ -128,9 +149,17 @@ function boardInicio() {
     }
     mainBoard.appendChild(document.createElement('br'));
   }
+  const boardRecovery = document.querySelectorAll('.pixel');
+  const desenhoAnterior = JSON.parse(localStorage.getItem('pixelBoard'));
+  for (let index = 0; index < boardRecovery.length; index += 1) {
+    boardRecovery[index].style.backgroundColor = desenhoAnterior[index];
+  }
+  guardaCor();
+  geral();
+  console.log(desenhoAnterior);
+  console.log(boardRecovery);
 }
 boardInicio();
-
 function geral() {
   // Mudar classe selected
   const selecionaFirstColor = document.querySelectorAll('.color')[0];
@@ -177,15 +206,7 @@ function geral() {
       // console.log(getPixel);
       // console.log(corDoPincel);
       selectPixel[index].style.backgroundColor = corDoPincel;
-
-      // function guardaCor() {
-      // let matrizDeCor = document.getElementsByClassName('pixel');
-      // console.log(matrizDeCor);
-      // for (index = 0; index < matrizDeCor.length; index += 1) {
-
-      // guardaMatrizDeCor[index] = matrizDeCor[index].style.background;
-      // console.log(guardaMatrizDeCor);  
-      // }
+      guardaCor();
     });
     // Botão apagar
     const getButtonLimpar = document.getElementById('clear-board');
@@ -197,6 +218,20 @@ function geral() {
         getPixelClass[index].style.background = corApagar;
         // }
       }
-    });
+    })
   }
+  guardaCor()
 }
+function guardaCor() {
+  let matrizDeCor = document.getElementsByClassName('pixel');
+  // console.log(matrizDeCor);
+  let guardaMatrizDeCor = [];
+  for (index = 0; index < matrizDeCor.length; index += 1) {
+    guardaMatrizDeCor.push(matrizDeCor[index].style.backgroundColor);
+    // console.log(guardaMatrizDeCor);
+  }
+  // console.log(guardaMatrizDeCor);
+  localStorage.setItem('pixelBoard', JSON.stringify(guardaMatrizDeCor));
+}
+
+
